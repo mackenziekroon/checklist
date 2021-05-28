@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "Francois One";
+  src: URL("FrancoisOne-Regular.ttf") format("truetype");
+}
+
 body {
-  background-color: #f8ad9d;
+  font-family: "Francois One", Fallback, sans-serif;
 }
 
 .welcome-container {
@@ -36,6 +41,6 @@ body {
 }
 
 .get-started {
-  color: #f8ad9d;
+  color: #ffdab9;
   font-size: 20px;
 }
