@@ -35,7 +35,7 @@ a:visited {
 }
 
 .welcome {
-  color: #ffdab9;
+  color: whitesmoke;
 }
 
 .get-started-btn {
@@ -49,19 +49,33 @@ a:visited {
 }
 
 .get-started {
-  color: #ffdab9;
+  color: whitesmoke;
   font-size: 20px;
 }
 
 .landing-container {
   display: flex;
-  height: 100vh;
+  height: 95vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: space-between;
   padding: 0 15px 0 15px;
-  background-color: #ffdab9;
+  background-color: whitesmoke;
+}
+
+.nav-bar {
+  height: 70px;
+  background-color: #f08080;
+  width: 100%;
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.account-icon {
+  margin-right: 5%;
 }
 
 .goals-container,
@@ -75,10 +89,12 @@ a:visited {
   padding: 5px;
   width: 80%;
   margin: 3%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  /* background-color: #f5dcdc; */
 }
 
 .add-btn {
-  background-color: #ffdab9;
+  background-color: whitesmoke;
   border: none;
   font-size: 50px;
 }
