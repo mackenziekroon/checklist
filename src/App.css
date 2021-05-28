@@ -6,6 +6,7 @@
 body,
 button {
   font-family: "Francois One", sans-serif;
+  overflow: hidden;
 }
 
 a,
@@ -46,4 +47,14 @@ a:visited {
 .get-started {
   color: #ffdab9;
   font-size: 20px;
+}
+
+.landing-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  padding: 0 15px 0 15px;
 }
