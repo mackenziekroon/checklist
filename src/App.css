@@ -3,10 +3,14 @@
   src: URL("FrancoisOne-Regular.ttf") format("truetype");
 } */
 
-body,
-button {
+body {
   font-family: "Francois One", sans-serif;
   overflow: hidden;
+  padding: 2px;
+}
+
+button {
+  font-family: "Francois One", sans-serif;
 }
 
 a,
@@ -51,10 +55,30 @@ a:visited {
 
 .landing-container {
   display: flex;
-  width: 100vw;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   align-content: space-between;
   padding: 0 15px 0 15px;
+  background-color: #ffdab9;
+}
+
+.goals-container,
+.daily-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid #f08080;
+  border-radius: 10%;
+  padding: 5px;
+  width: 80%;
+  margin: 3%;
+}
+
+.add-btn {
+  background-color: #ffdab9;
+  border: none;
+  font-size: 50px;
 }
