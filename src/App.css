@@ -1,10 +1,16 @@
-@font-face {
+/* @font-face {
   font-family: "Francois One";
   src: URL("FrancoisOne-Regular.ttf") format("truetype");
+} */
+
+body,
+button {
+  font-family: "Francois One", sans-serif;
 }
 
-body {
-  font-family: "Francois One", Fallback, sans-serif;
+a,
+a:visited {
+  text-decoration: none;
 }
 
 .welcome-container {
@@ -16,7 +22,7 @@ body {
   width: 100vw;
   background: rgb(255, 218, 185);
   background: linear-gradient(
-    54deg,
+    22deg,
     rgba(255, 218, 185, 1) 19%,
     rgba(248, 173, 157, 1) 50%,
     rgba(240, 128, 128, 1) 81%
@@ -30,14 +36,11 @@ body {
 .get-started-btn {
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #f08080;
   width: 100px;
   padding: 20px 80px 20px 80px;
   border: none;
-  box-shadow: inset 0 0 20px #f4978e;
   border-radius: 50%;
-  margin-top: 40%;
 }
 
 .get-started {
