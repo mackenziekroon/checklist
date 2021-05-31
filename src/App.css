@@ -123,10 +123,21 @@ a:visited {
   height: 80vh;
 }
 
+.completed-btn {
+  background-color: whitesmoke;
+  /* border: solid black 2px; */
+  border: none;
+  padding: 10px 30px 10px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  width: 150px;
+}
+
 .back-btn {
   background-color: #f9a03f;
   border: none;
   padding: 10px 30px 10px 30px;
   margin-bottom: 70px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  width: 150px;
 }

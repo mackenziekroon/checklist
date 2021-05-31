@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import Welcome from "./Components/Welcome";
 import LandingScreen from "./Components/LandingScreen";
 import Reminders from "./Components/Reminders";
+import CompletedReminders from "./Components/CompletedReminders";
 //component
 
 /**
@@ -26,6 +27,11 @@ export default class Routes extends Component {
         <Route exact path="/" component={Welcome} />
         <Route exact path="/landing" component={LandingScreen} />
         <Route exact path="/reminders" component={Reminders} />
+        <Route
+          exact
+          path="/reminders/completed"
+          component={CompletedReminders}
+        />
         {/* <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} /> */}
 
