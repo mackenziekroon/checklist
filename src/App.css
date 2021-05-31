@@ -59,11 +59,19 @@ a:visited {
   display: flex;
   height: 95vh;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
+  /* margin-top: 15%; */
   align-items: center;
   align-content: space-between;
-  padding: 0 15px 0 15px;
-  background-color: white;
+  padding: 50px 15px 0 15px;
+  /* background-color: white; */
+  background: rgb(249, 160, 63);
+  background: radial-gradient(
+    circle,
+    rgba(249, 160, 63, 1) 9%,
+    rgba(248, 173, 157, 1) 68%,
+    rgba(240, 128, 128, 1) 96%
+  );
 }
 
 .nav-bar {
@@ -80,6 +88,10 @@ a:visited {
   margin-right: 5%;
 }
 
+.today-is {
+  color: whitesmoke;
+}
+
 .goals-container,
 .daily-container {
   display: flex;
@@ -87,12 +99,12 @@ a:visited {
   justify-content: center;
   align-items: center;
   border: 5px solid #f9a03f;
-  border-radius: 10%;
-  padding: 5px;
+  /* border-radius: 50%; */
+  padding: 30px;
   width: 80%;
-  margin: 3%;
+  margin: 15% 3% 0 3%;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  /* background-color: #f5dcdc; */
+  background-color: whitesmoke;
 }
 
 .add-btn {
