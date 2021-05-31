@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AccountCircle } from "@material-ui/icons";
+import Navbar from "./Navbar";
 
 const LandingScreen = (props) => {
   let today = new Date();
@@ -10,11 +10,7 @@ const LandingScreen = (props) => {
   today = mm + "/" + dd + "/" + yyyy;
   return (
     <div>
-      <div className="nav-bar">
-        <div className="account-icon">
-          <AccountCircle style={{ color: "white", fontSize: "40px" }} />
-        </div>
-      </div>
+      <Navbar />
       <div className="landing-container">
         <h1 className="today-is">Today is {today}</h1>
         <Link to="/reminders">
