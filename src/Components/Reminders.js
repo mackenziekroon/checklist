@@ -27,22 +27,24 @@ class Reminders extends React.Component {
 
   render() {
     return (
-      <div className="reminders-container">
+      <div>
         <Navbar />
-        <h1>Reminders</h1>
-        <div className="reminders-list">
-          {tempReminders.map((reminder) => (
-            <div key={reminder.id}>
-              <FormControlLabel
-                control={<Checkbox checked={this.checked} />}
-                label={reminder.title}
-              />
-            </div>
-          ))}
+        <div className="reminders-container">
+          <h1>Reminders</h1>
+          <div className="reminders-list">
+            {tempReminders.map((reminder) => (
+              <div key={reminder.id}>
+                <FormControlLabel
+                  control={<Checkbox checked={this.checked} />}
+                  label={reminder.title}
+                />
+              </div>
+            ))}
+          </div>
+          <Link to="/landing">
+            <button className="back-btn">Back</button>
+          </Link>
         </div>
-        <Link to="/landing">
-          <button className="back-btn">Back</button>
-        </Link>
       </div>
     );
   }
