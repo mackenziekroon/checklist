@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AccountCircle } from "@material-ui/icons";
 
 const LandingScreen = (props) => {
@@ -16,23 +17,17 @@ const LandingScreen = (props) => {
       </div>
       <div className="landing-container">
         <h1 className="today-is">Today is {today}</h1>
-        <div className="goals-container">
-          <h2>
-            Reminders
-            {/* <button className="add-btn">+</button> */}
-          </h2>
-        </div>
-        <div className="daily-container">
-          <h2>
-            Daily Goals
-            {/* <button className="add-btn">+</button> */}
-          </h2>
-          {/* <p>Drink Water</p>
-          <input type="text" />
-          oz
-          <p>Pilates</p>
-          <p>View All Goals</p> */}
-        </div>
+        <Link to="/reminders">
+          <div className="goals-container">
+            <h2>Reminders</h2>
+          </div>
+        </Link>
+
+        <Link to="/reminders">
+          <div className="daily-container">
+            <h2>Daily Goals</h2>
+          </div>
+        </Link>
       </div>
     </div>
   );

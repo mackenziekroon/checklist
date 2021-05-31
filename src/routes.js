@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 // import { me } from "./store";
 import Welcome from "./Components/Welcome";
 import LandingScreen from "./Components/LandingScreen";
+import Reminders from "./Components/Reminders";
 //component
 
 /**
@@ -24,6 +25,7 @@ export default class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Welcome} />
         <Route exact path="/landing" component={LandingScreen} />
+        <Route exact path="/reminders" component={Reminders} />
         {/* <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} /> */}
 
