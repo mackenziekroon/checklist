@@ -64,9 +64,9 @@ a:visited {
   background: rgb(249, 160, 63);
   background: radial-gradient(
     circle,
-    rgba(249, 160, 63, 1) 9%,
-    rgba(248, 173, 157, 1) 68%,
-    rgba(240, 128, 128, 1) 96%
+    rgba(249, 160, 63, 1) 2%,
+    rgba(175, 193, 214, 1) 70%,
+    rgba(255, 205, 173, 1) 96%
   );
   overflow: hidden;
 }
@@ -119,6 +119,12 @@ a:visited {
   overflow: hidden;
 }
 
+.add-new-reminder {
+  background-color: whitesmoke;
+  border: none;
+  font-size: 40px;
+}
+
 .reminders-list {
   height: 80vh;
 }
@@ -138,6 +144,32 @@ a:visited {
   border: none;
   padding: 10px 30px 10px 30px;
   margin-bottom: 70px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  width: 150px;
+}
+
+.show-new-reminder-container {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.reminder-input {
+  width: 90%;
+  border: none;
+  height: 40px;
+}
+
+.create-reminder-btn {
+  background-color: #f9a03f;
+  border: none;
+  padding: 10px 30px 10px 30px;
+  margin-top: 50px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
   width: 150px;
 }
