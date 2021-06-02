@@ -3,43 +3,50 @@
 const db = require("../server/db");
 const { User, Reminder } = require("./db/models");
 
+const remindersData = [
+  {
+    title: "title 1",
+    completed: false,
+  },
+  {
+    title: "title 2",
+    completed: false,
+  },
+];
+
+const usersData = [
+  {
+    firstName: "Elisa",
+    lastName: "Levet",
+    email: "elisa@hotmail.com",
+    password: "hola",
+  },
+  {
+    firstName: "Mackenzie",
+    lastName: "Kroon",
+    email: "mkroon@gmail.com",
+    password: "12345?!",
+  },
+  {
+    firstName: "Jessica",
+    lastName: "Cotrina",
+    email: "jessicacotrina@gmail.com",
+    password: "caracoles",
+  },
+];
+
 async function seed() {
+  console.log("inside seed function");
   await db.sync({ force: true });
   console.log("db synced!");
 
-  const users = await Promise.all([
-    User.create({
-      firstName: "Elisa",
-      lastName: "Levet",
-      email: "elisa@hotmail.com",
-      password: "hola",
-    }),
-    User.create({
-      firstName: "Mackenzie",
-      lastName: "Kroon",
-      email: "mkroon@gmail.com",
-      password: "12345?!",
-    }),
-    User.create({
-      firstName: "Jessica",
-      lastName: "Cotrina",
-      email: "jessicacotrina@gmail.com",
-      password: "caracoles",
-    }),
+  const [users, reminders] = await Promise.all([
+    User.bulkCreate(usersData, { returning: true }),
+    Reminder.bulkCreate(remindersData, { returning: true }),
   ]);
 
-  const reminders = await Reminder.all([
-    Reminder.create({
-      UserId: 1,
-      title: "title 1",
-      completed: false,
-    }),
-    Reminder.create({
-      UserId: 2,
-      title: "title 2",
-      completed: false,
-    }),
-  ]);
+  await reminders[0].setUser(users[0]);
+  await reminders[1].setUser(users[1]);
 
   // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`);
@@ -50,6 +57,7 @@ async function seed() {
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
   console.log("seeding...");
+  console.log("HERE!!!");
   try {
     await seed();
   } catch (err) {
