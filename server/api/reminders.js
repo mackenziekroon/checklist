@@ -7,6 +7,7 @@ const { Reminder } = require("../db/models");
 router.get("/", async (req, res, next) => {
   try {
     const reminders = Reminder.findAll();
+    console.log("reminders->", reminders);
     res.send(reminders);
   } catch (error) {
     next(error);
