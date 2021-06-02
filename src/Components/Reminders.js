@@ -44,7 +44,7 @@ class Reminders extends React.Component {
           <h1>
             Reminders <button className="add-new-reminder">+</button>
           </h1>
-          {/* {this.state.showNewReminder ? (
+          {this.state.showNewReminder ? (
             <AddNewReminder />
           ) : (
             <div className="reminders-list">
@@ -57,7 +57,7 @@ class Reminders extends React.Component {
                 </div>
               ))}
             </div>
-          )} */}
+          )}
           <Link to="/reminders/completed">
             <button className="completed-btn">View Completed</button>
           </Link>

@@ -11,7 +11,7 @@ export const fetchReminder = () => async (dispatch) => {
   try {
     console.log("before fetch");
     const { data } = await axios.get("/api/reminders");
-    console.log("fetch response: ", data);
+    console.log("fetch response: ", { data });
     dispatch(getReminder(data));
   } catch (error) {
     console.log(error);
