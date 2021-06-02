@@ -6,8 +6,8 @@ const { Reminder } = require("../db/models");
 // TEMP: GET ALL REMINDERS
 router.get("/", async (req, res, next) => {
   try {
-    const reminders = Reminder.findAll();
-    console.log("reminders->", reminders);
+    const reminders = await Reminder.findAll();
+    // console.log("reminders->", reminders);
     res.send(reminders);
   } catch (error) {
     next(error);
@@ -15,18 +15,18 @@ router.get("/", async (req, res, next) => {
 });
 
 // GET ALL REMINDERS FOR USER ID
-router.get("/", async (req, res, next) => {
-  try {
-    let userId = req.user.id;
-    let reminders = await Reminder.findAll({
-      where: {
-        userId: userId,
-      },
-    });
-    res.send(reminders);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     let userId = req.user.id;
+//     let reminders = await Reminder.findAll({
+//       where: {
+//         userId: userId,
+//       },
+//     });
+//     res.send(reminders);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

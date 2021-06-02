@@ -4,12 +4,15 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
 import AddNewReminder from "./AddNewReminder";
+import { fetchReminder } from "../store/reminder";
+import { connect } from "react-redux";
+// import Reminder from "../store/reminder";
 
-let tempReminders = [
-  { id: 1, title: "Prep for interview", completed: false },
-  { id: 2, title: "Finish application essay for Echo Corp", completed: false },
-  { id: 3, title: "Coaching call on Thursday", completed: false },
-];
+// let tempReminders = [
+//   { id: 1, title: "Prep for interview", completed: false },
+//   { id: 2, title: "Finish application essay for Echo Corp", completed: false },
+//   { id: 3, title: "Coaching call on Thursday", completed: false },
+// ];
 
 class Reminders extends React.Component {
   constructor(props) {
@@ -21,6 +24,10 @@ class Reminders extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.loadReminders();
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: !event.target.checked,
@@ -28,7 +35,8 @@ class Reminders extends React.Component {
   }
 
   render() {
-    console.log("here", this.state.showNewReminder);
+    const reminders = this.props.reminder;
+    console.log("here", reminders);
     return (
       <div>
         <Navbar />
@@ -36,11 +44,11 @@ class Reminders extends React.Component {
           <h1>
             Reminders <button className="add-new-reminder">+</button>
           </h1>
-          {this.state.showNewReminder ? (
+          {/* {this.state.showNewReminder ? (
             <AddNewReminder />
           ) : (
             <div className="reminders-list">
-              {tempReminders.map((reminder) => (
+              {reminders.map((reminder) => (
                 <div key={reminder.id}>
                   <FormControlLabel
                     control={<Checkbox checked={this.checked} />}
@@ -49,7 +57,7 @@ class Reminders extends React.Component {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
           <Link to="/reminders/completed">
             <button className="completed-btn">View Completed</button>
           </Link>
@@ -62,4 +70,16 @@ class Reminders extends React.Component {
   }
 }
 
-export default Reminders;
+const mapState = (state) => {
+  return {
+    reminder: state.reminder,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadReminders: () => dispatch(fetchReminder()),
+  };
+};
+
+export default connect(mapState, mapDispatch)(Reminders);

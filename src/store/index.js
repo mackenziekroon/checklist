@@ -4,9 +4,11 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import user from "./user";
+import reminder from "./reminder";
 
 const reducer = combineReducers({
   user,
+  reminder,
 });
 
 const middleware = composeWithDevTools(
