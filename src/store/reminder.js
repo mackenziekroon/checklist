@@ -18,7 +18,7 @@ export const fetchReminder = () => async (dispatch) => {
   }
 };
 
-const initalState = {};
+const initalState = [];
 
 export default function reminder(state = initalState, action) {
   switch (action.type) {

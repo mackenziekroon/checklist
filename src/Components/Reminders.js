@@ -19,7 +19,6 @@ class Reminders extends React.Component {
     super(props);
     this.state = {
       checked: false,
-      showNewReminder: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -35,7 +34,7 @@ class Reminders extends React.Component {
   }
 
   render() {
-    const reminders = this.props.reminder;
+    const reminders = this.props.reminder || [];
     console.log("here", reminders);
     return (
       <div>
@@ -44,11 +43,9 @@ class Reminders extends React.Component {
           <h1>
             Reminders <button className="add-new-reminder">+</button>
           </h1>
-          {this.state.showNewReminder ? (
-            <AddNewReminder />
-          ) : (
-            <div className="reminders-list">
-              {reminders.map((reminder) => (
+          <div className="reminders-list">
+            {reminders &&
+              reminders.map((reminder) => (
                 <div key={reminder.id}>
                   <FormControlLabel
                     control={<Checkbox checked={this.checked} />}
@@ -56,8 +53,8 @@ class Reminders extends React.Component {
                   />
                 </div>
               ))}
-            </div>
-          )}
+          </div>
+
           <Link to="/reminders/completed">
             <button className="completed-btn">View Completed</button>
           </Link>
