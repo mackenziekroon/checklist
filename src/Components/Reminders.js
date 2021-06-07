@@ -6,13 +6,6 @@ import { Link } from "react-router-dom";
 import AddNewReminder from "./AddNewReminder";
 import { fetchReminder } from "../store/reminder";
 import { connect } from "react-redux";
-// import Reminder from "../store/reminder";
-
-// let tempReminders = [
-//   { id: 1, title: "Prep for interview", completed: false },
-//   { id: 2, title: "Finish application essay for Echo Corp", completed: false },
-//   { id: 3, title: "Coaching call on Thursday", completed: false },
-// ];
 
 class Reminders extends React.Component {
   constructor(props) {
@@ -35,7 +28,6 @@ class Reminders extends React.Component {
 
   render() {
     const reminders = this.props.reminder || [];
-    console.log("here", reminders);
     return (
       <div>
         <Navbar />

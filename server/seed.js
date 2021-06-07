@@ -12,6 +12,22 @@ const remindersData = [
     title: "title 2",
     completed: false,
   },
+  {
+    title: "title 3",
+    completed: false,
+  },
+  {
+    title: "title 4",
+    completed: false,
+  },
+  {
+    title: "pick up dry cleaning",
+    completed: true,
+  },
+  {
+    title: "buy more stamps",
+    completed: true,
+  },
 ];
 
 const usersData = [
