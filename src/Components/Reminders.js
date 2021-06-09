@@ -12,8 +12,10 @@ class Reminders extends React.Component {
     super(props);
     this.state = {
       checked: false,
+      newReminder: false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,12 @@ class Reminders extends React.Component {
     });
   }
 
+  handleClick() {
+    this.setState({
+      newReminder: !this.state.newReminder,
+    });
+  }
+
   render() {
     const reminders = this.props.reminder || [];
     return (
@@ -33,14 +41,18 @@ class Reminders extends React.Component {
         <Navbar />
         <div className="reminders-container">
           <h1>
-            Reminders <button className="add-new-reminder">+</button>
+            Reminders{" "}
+            <button className="add-new-reminder" onClick={this.handleClick}>
+              +
+            </button>
           </h1>
+          {this.state.newReminder ? <AddNewReminder /> : null}
           <div className="reminders-list">
             {reminders &&
               reminders.map((reminder) => (
                 <div key={reminder.id}>
                   <FormControlLabel
-                    control={<Checkbox checked={this.checked} />}
+                    control={<Checkbox checked={reminder.completed} />}
                     label={reminder.title}
                   />
                 </div>

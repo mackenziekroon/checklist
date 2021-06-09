@@ -32,6 +32,17 @@ router.get("/completed", async (req, res, next) => {
   }
 });
 
+// ADD NEW REMINDER
+
+router.post("/", async (req, res, next) => {
+  try {
+    let newReminder = await Reminder.create(req.body);
+    res.status(201).send(newReminder);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // GET ALL REMINDERS FOR USER ID
 // router.get("/", async (req, res, next) => {
 //   try {

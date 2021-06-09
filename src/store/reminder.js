@@ -2,6 +2,7 @@ import axios from "axios";
 
 const GET_REMINDER = "GET_REMINDER";
 const GET_COMPLETED_REMINDER = "GET_COMPLETED_REMINDER";
+const ADD_REMINDER = "ADD_REMINDER";
 
 const getReminder = (reminder) => ({
   type: GET_REMINDER,
@@ -11,6 +12,11 @@ const getReminder = (reminder) => ({
 const getCompletedReminder = (completedReminder) => ({
   type: GET_COMPLETED_REMINDER,
   completedReminder,
+});
+
+const addReminder = (newReminder) => ({
+  type: ADD_REMINDER,
+  newReminder,
 });
 
 export const fetchReminder = () => async (dispatch) => {
@@ -31,6 +37,15 @@ export const fetchCompletedReminder = () => async (dispatch) => {
   }
 };
 
+export const postNewReminder = (newReminder) => async (dispatch) => {
+  try {
+    const { data } = await axios.post("/api/reminders", newReminder);
+    dispatch(addReminder(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const initalState = [];
 
 export default function reminder(state = initalState, action) {
@@ -39,6 +54,8 @@ export default function reminder(state = initalState, action) {
       return action.reminder;
     case GET_COMPLETED_REMINDER:
       return action.completedReminder;
+    case ADD_REMINDER:
+      return [...state, action.newReminder];
     default:
       return state;
   }
