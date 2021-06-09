@@ -33,11 +33,12 @@ class CompletedReminders extends React.Component {
           <h1>Completed</h1>
           <div className="reminders-list">
             {completedReminders.map((reminder) => (
-              <div key={reminder.id}>
+              <div className="single-reminder" key={reminder.id}>
                 <FormControlLabel
                   control={<Checkbox checked={reminder.completed} />}
                   label={reminder.title}
                 />
+                <button className="delete-reminder">Delete</button>
               </div>
             ))}
           </div>

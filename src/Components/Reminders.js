@@ -40,17 +40,17 @@ class Reminders extends React.Component {
       <div>
         <Navbar />
         <div className="reminders-container">
-          <h1>
-            Reminders{" "}
+          <h1 className="reminders-title">
+            Reminders
             <button className="add-new-reminder" onClick={this.handleClick}>
-              +
+              {this.state.newReminder ? "x" : "+"}
             </button>
           </h1>
           {this.state.newReminder ? <AddNewReminder /> : null}
           <div className="reminders-list">
             {reminders &&
               reminders.map((reminder) => (
-                <div key={reminder.id}>
+                <div className="single-reminder" key={reminder.id}>
                   <FormControlLabel
                     control={<Checkbox checked={reminder.completed} />}
                     label={reminder.title}

@@ -8,6 +8,7 @@ class AddNewReminder extends React.Component {
     super(props);
     this.state = {
       title: "",
+      close: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
