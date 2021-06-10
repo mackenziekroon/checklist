@@ -17,38 +17,4 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//updates user type as "CANDIDATE" OR "ORGANIZATION"
-router.put("/", async (req, res, next) => {
-  try {
-    let user = req.user.id;
-    let updatedUser = await User.update(req.body, {
-      where: {
-        id: user,
-      },
-      returning: true,
-      plain: true,
-    });
-    res.send(updatedUser[1]);
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.put("/img", async (req, res, next) => {
-  let img = { img: req.body };
-  try {
-    let user = req.user.id;
-    let updatedUser = await User.update(img, {
-      where: {
-        id: user,
-      },
-      returning: true,
-      plain: true,
-    });
-    res.send(updatedUser[1]);
-  } catch (error) {
-    next(error);
-  }
-});
-
 module.exports = router;

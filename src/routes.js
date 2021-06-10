@@ -8,6 +8,7 @@ import Welcome from "./Components/Welcome";
 import LandingScreen from "./Components/LandingScreen";
 import Reminders from "./Components/Reminders";
 import CompletedReminders from "./Components/CompletedReminders";
+import ErrorPage from "./Components/ErrorPage";
 //component
 
 /**
@@ -27,6 +28,7 @@ class Routes extends Component {
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login" component={LogIn} />
         {/* <Route exact path="/signup" component={Signup} /> */}
+        <Route path="*" component={ErrorPage} />
 
         {isLoggedIn && (
           <Switch>
