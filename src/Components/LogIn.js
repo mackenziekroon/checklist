@@ -2,41 +2,44 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { auth } from "../store";
-import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props;
+  const { name, handleSubmit, error } = props;
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="login-container">
+      <h2 className="welcome">Log In</h2>
+      <form className="log-in-form" onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input className="form-control" name="email" type="email" required />
+          <label htmlFor="email">{/* <small>Email</small> */}</label>
+          <input
+            placeholder="Email"
+            className="form-control"
+            name="email"
+            type="email"
+            required
+          />
         </div>
         <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
+          <label htmlFor="password">{/* <small>Password</small> */}</label>
           <input
+            placeholder="Password"
             className="form-control"
             name="password"
             type="password"
             required
           />
         </div>
-        <br />
-        <div>
-          <button className="btn btn-primary" type="submit">
-            {displayName}
-          </button>
-        </div>
+
+        <button className="sign-in-btn" type="submit">
+          Sign In
+        </button>
+
         {error && error.response && <div> {error.response.data} </div>}
-        <br />
+
+        <h4 className="welcome">Don't have an account?</h4>
       </form>
     </div>
   );
