@@ -43,6 +43,20 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// DELETE REMINDER
+router.delete("/completed/:id", async (req, res, next) => {
+  try {
+    await Reminder.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // GET ALL REMINDERS FOR USER ID
 // router.get("/", async (req, res, next) => {
 //   try {

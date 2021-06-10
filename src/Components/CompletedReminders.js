@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
-import { fetchCompletedReminder } from "../store/reminder";
+import { fetchCompletedReminder, destroyReminder } from "../store/reminder";
 import { connect } from "react-redux";
 
 // let tempReminders = [
@@ -38,7 +38,12 @@ class CompletedReminders extends React.Component {
                   control={<Checkbox checked={reminder.completed} />}
                   label={reminder.title}
                 />
-                <button className="delete-reminder">Delete</button>
+                <button
+                  className="delete-reminder"
+                  onClick={() => this.props.loadFilteredReminders(reminder.id)}
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>
@@ -60,6 +65,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadCompletedReminders: () => dispatch(fetchCompletedReminder()),
+    loadFilteredReminders: (id) => dispatch(destroyReminder(id)),
   };
 };
 

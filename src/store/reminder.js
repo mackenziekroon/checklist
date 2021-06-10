@@ -3,6 +3,7 @@ import axios from "axios";
 const GET_REMINDER = "GET_REMINDER";
 const GET_COMPLETED_REMINDER = "GET_COMPLETED_REMINDER";
 const ADD_REMINDER = "ADD_REMINDER";
+const DELETE_REMINDER = "DELETE_REMINDER";
 
 const getReminder = (reminder) => ({
   type: GET_REMINDER,
@@ -17,6 +18,11 @@ const getCompletedReminder = (completedReminder) => ({
 const addReminder = (newReminder) => ({
   type: ADD_REMINDER,
   newReminder,
+});
+
+const deleteReminder = (id) => ({
+  type: DELETE_REMINDER,
+  id,
 });
 
 export const fetchReminder = () => async (dispatch) => {
@@ -46,6 +52,16 @@ export const postNewReminder = (newReminder) => async (dispatch) => {
   }
 };
 
+export const destroyReminder = (id) => async (dispatch) => {
+  console.log("id in thunk->", id);
+  try {
+    await axios.delete(`/api/reminders/completed/${id}`);
+    dispatch(deleteReminder(id));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const initalState = [];
 
 export default function reminder(state = initalState, action) {
@@ -56,6 +72,8 @@ export default function reminder(state = initalState, action) {
       return action.completedReminder;
     case ADD_REMINDER:
       return [...state, action.newReminder];
+    case DELETE_REMINDER:
+      return [...state.filter((reminder) => reminder.id !== action.id)];
     default:
       return state;
   }
