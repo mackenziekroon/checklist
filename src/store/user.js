@@ -6,7 +6,6 @@ import history from "../history";
  */
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
-const UPDATE_USER_TYPE = "UPDATE_USER_TYPE";
 
 /**
  * INITIAL STATE
@@ -18,7 +17,6 @@ const defaultUser = {};
  */
 const getUser = (user) => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
-const updateUserType = (user) => ({ type: UPDATE_USER_TYPE, user });
 
 /**
  * THUNK CREATORS
@@ -32,7 +30,7 @@ export const me = () => async (dispatch) => {
   }
 };
 
-export const auth = (email, password, method, history) => async (dispatch) => {
+export const auth = (email, password, method) => async (dispatch) => {
   let res;
   try {
     res = await axios.post(`/auth/${method}`, { email, password });
@@ -42,26 +40,10 @@ export const auth = (email, password, method, history) => async (dispatch) => {
 
   try {
     dispatch(getUser(res.data));
-    if (res.data.userType === "CANDIDATE") {
-      const { data: newCandidate } = await axios.get("/api/candidate");
-      history.push(`/findJobs/${newCandidate.id}`);
-    } else {
-      history.push("/organization");
-    }
+    history.push("/landing");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
   }
-};
-
-export const putUserType = (type) => {
-  return async (dispatch) => {
-    try {
-      let { data } = await axios.put("/api/users", type);
-      dispatch(updateUserType(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
 };
 
 const ADD_USER = "ADD_USER";
@@ -71,11 +53,14 @@ const addUser = (user) => {
     user,
   };
 };
-export const signup = (email, password, history) => async (dispatch) => {
+export const signup = (firstName, lastName, email, password) => async (
+  dispatch
+) => {
   let res;
-
   try {
     res = await axios.post(`/auth/signup`, {
+      firstName,
+      lastName,
       email,
       password,
     });
@@ -86,7 +71,7 @@ export const signup = (email, password, history) => async (dispatch) => {
 
   try {
     dispatch(getUser(res.data));
-    history.push("/signup/type");
+    history.push("/landing");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
   }
@@ -96,7 +81,7 @@ export const logout = () => async (dispatch) => {
   try {
     await axios.post("/auth/logout");
     dispatch(removeUser());
-    // history.push('/')
+    history.push("/");
   } catch (err) {
     console.error(err);
   }
@@ -105,7 +90,7 @@ export const logout = () => async (dispatch) => {
 /**
  * REDUCER
  */
-export default function user(state = defaultUser, action) {
+export default function (state = defaultUser, action) {
   switch (action.type) {
     case ADD_USER:
       return action.user;
@@ -113,8 +98,6 @@ export default function user(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
-    case UPDATE_USER_TYPE:
-      return action.user;
     default:
       return state;
   }
