@@ -3,16 +3,17 @@ import PropTypes from "prop-types";
 import { logout } from "../store";
 import { AccountCircle } from "@material-ui/icons";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => {
   return (
     <div className="nav-bar">
-      <a href="logout" onClick={handleClick}>
+      <Link to="/">
         {/* Logout */}
-        <div className="account-icon">
+        <div href="logout" onClick={handleClick} className="account-icon">
           <AccountCircle style={{ color: "white", fontSize: "40px" }} />
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
