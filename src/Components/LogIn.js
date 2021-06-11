@@ -11,7 +11,11 @@ const AuthForm = (props) => {
   return (
     <div className="login-container">
       <h2 className="welcome">Log In</h2>
-      <form className="log-in-form" onSubmit={handleSubmit} name={name}>
+      <form
+        className="log-in-form"
+        onSubmit={(event) => handleSubmit(event, props.history)}
+        name={name}
+      >
         <div>
           <label htmlFor="email">{/* <small>Email</small> */}</label>
           <input
@@ -62,12 +66,12 @@ const mapLogin = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSubmit(evt) {
+    handleSubmit(evt, history) {
       evt.preventDefault();
       const formName = evt.target.name;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch(auth(email, password, formName));
+      dispatch(auth(email, password, formName, history));
     },
   };
 };
