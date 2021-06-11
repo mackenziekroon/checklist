@@ -125,7 +125,7 @@ a:visited {
 }
 
 .account-icon {
-  margin-right: 5%;
+  margin-right: 10px;
 }
 
 .today-is {
@@ -166,13 +166,16 @@ a:visited {
 
 .reminders-title {
   position: static;
+  font-size: 40px;
+  margin-top: 10px;
 }
 
 .add-new-reminder {
   background-color: whitesmoke;
   border: none;
-  font-size: 40px;
+  font-size: 20px;
   color: #f9a03f;
+  margin-bottom: 20px;
 }
 
 .reminders-list {
@@ -221,11 +224,12 @@ a:visited {
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 1000000px;
   width: 100vw;
   z-index: 1;
   margin-bottom: 50px;
   align-items: center;
+  z-index: 1;
 }
 
 .reminder-input {

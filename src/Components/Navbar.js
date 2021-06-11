@@ -8,7 +8,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => {
   return (
     <div className="nav-bar">
       <a href="logout" onClick={handleClick}>
-        Logout
+        {/* Logout */}
         <div className="account-icon">
           <AccountCircle style={{ color: "white", fontSize: "40px" }} />
         </div>

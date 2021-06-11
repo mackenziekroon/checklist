@@ -40,12 +40,10 @@ class Reminders extends React.Component {
       <div>
         <Navbar />
         <div className="reminders-container">
-          <h1 className="reminders-title">
-            Reminders
-            <button className="add-new-reminder" onClick={this.handleClick}>
-              {this.state.newReminder ? "x" : "+"}
-            </button>
-          </h1>
+          <div className="reminders-title">Reminders</div>
+          <button className="add-new-reminder" onClick={this.handleClick}>
+            {this.state.newReminder ? "Close" : "Add New Reminder +"}
+          </button>
           {this.state.newReminder ? <AddNewReminder /> : null}
           <div className="reminders-list">
             {reminders &&
